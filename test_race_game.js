@@ -66,29 +66,30 @@ $(function() {
 
           var p1Moves = 0;
           var p2Moves = 0;
-          var max = 11;
+          var max = 15;
           var p1Wins = 0;
           var p2Wins = 0;
 
-    Player.constructor.prototype.move = $(document).keypress (function(event) {   
+    Player.constructor.prototype.move = 
           
-          var keycode = (event.keyCode ? event.keyCode : event.which); 
+          $(document).keypress (function(action) { 
+          
 
-          if (p1Moves < max) {
-              // start by pressing A
-           if(keycode == '65'){ 
-              $('.a1').animate({'margin-left': '+=40px' }, 700);
-              p1Moves++
-            } 
-          }
+            if (p1Moves < max) {
+                // start by pressing 1
+             if(action.which == 49){ 
+                $('.a1').animate({'margin-left': '+=40px' }, 700);
+                p1Moves++
+              } 
+            }
 
-          if (p2Moves < max) {
-            //start by pressing L
-           if(keycode == '76') {
-              $('.b1').animate({'margin-left': '+=40px' }, 700);
-              p2Moves++;
-            } 
-          }
+            if (p2Moves < max) {
+              //start by pressing 0
+             if(action.which == 48) {
+                $('.b1').animate({'margin-left': '+=40px' }, 700);
+                p2Moves++;
+              } 
+          };
     });
 
 
@@ -96,12 +97,12 @@ $(function() {
 
     Player.constructor.prototype.winOnce = $(document).keypress (function () {
       
-      if (p1Moves >= 9) {
+      if (p1Moves >= 10) {
         p1Wins++;
         alert("Cake Wins!");
     }
 
-      if (p2Moves >= 9) {
+      if (p2Moves >= 10) {
         p2Wins++;
         alert("Pie Wins!");
       }
